@@ -1,8 +1,10 @@
 {
   "name": "express-share",
   "version": "0.0.0",
+  "description": "CS358 Final Project",
   "private": true,
   "scripts": {
+    "debug": "DEBUG=express-share:* node ./bin/www",
     "start": "node ./bin/www"
   },
   "dependencies": {
