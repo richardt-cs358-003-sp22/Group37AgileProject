@@ -1,6 +1,38 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-  <h1>{{title}}</h1>
-  <p>Welcome to {{title}}</p>
+
+  <div class = "container">
+  <div class="p-3 border">Custom column padding</div>
+  <h1> Nav Bar </h1>
+
+<div class = "row">
+<div class = "col wf"> Calender </div>
+<div class = "col wf"> Search </div>
+</div>
+
+
+<table>
+  <tr>
+    <th> Month </th>
+    <th> Day </th>
+    <th> Year </th>
+  </tr>
+  <tr>
+    <td> April </td>
+    <td> May </td>
+    <td> June </td>
+  </tr>
+</table>
+
+<div class = "row">
+<div class = "p-3 border border-dark"> Listings </div>
+</div>
+
+</div>
+
+
 {% endblock %}
+
+
+
