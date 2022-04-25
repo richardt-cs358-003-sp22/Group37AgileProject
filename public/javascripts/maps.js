@@ -25,7 +25,7 @@
   };
   $('#search_bar').keyup((e) => {
     lookup(e.target.value, (e) => {
-      console.log(e)
+      console.log(e);
     });
   });
 })();
