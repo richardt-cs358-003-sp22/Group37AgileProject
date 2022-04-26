@@ -3,15 +3,24 @@
 {% block body %}
 
   <div class = "container">
-  <div class="p-3 border">Custom column padding</div>
-  <h1> Nav Bar </h1>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Home</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 
 <div class = "row">
-<div class = "col wf"> Calender </div>
-<div class = "col wf"> Search </div>
-</div>
-
-
+<div class = "col wf"> Calender 
 <table>
   <tr>
     <th> Month </th>
@@ -24,6 +33,24 @@
     <td> June </td>
   </tr>
 </table>
+</div>
+
+<div class = "col wf">
+<div class4="d-flex flex-row">
+<div class="d-flex justify-content-end p-2"> Search </div>
+<div class"p-2"> Resort Name: </div>
+<div class"p-2"> Location: </div>
+<div class"p-2"> Date: </div>
+</div>
+</div>
+
+<div class = "col wf">
+<div class4="d-flex flex-row">
+<div class"p-2"> &nbsp; </div>
+<div class"p-2"> Room Type: </div>
+<div class"p-2"> Owner: </div>
+</div>
+</div>
 
 <div class = "row">
 <div class = "p-3 border border-dark"> Listings </div>
