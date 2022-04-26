@@ -13,10 +13,14 @@ router.get("/", function (req, res, next) {
 
 router.post("/login", function (req, res, next) {
   db.get_user(req.body.email, req.body.password)
-    .then((o) => res.json(o))
+    .then((o) => {
+      // TODO: set cookie or something
+      res.redirect('/');
+    })
     .catch((e) => {
       console.log(e);
-      next(createError(e.code || 500));
+      res.status(e.code || 500);
+      res.render('login', { title: 'Express', error: e.code + ' ' + e.error });
     });
 });
 

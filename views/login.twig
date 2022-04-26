@@ -4,10 +4,13 @@
 <div class="container vw-100 vh-100 d-flex flex-column justify-content-center">
   <div class="row"></div>
   <div class="row">
-    <form action="/user/login" method="post"> 
+    <form action="/users/login" method="post"> 
       <div class="col-lg-4"></div>
-      <input class="form-control" type="text" name="UserName" placeholder="UserName">
-      <input class="form-control" type="password" name="Password" placeholder="Password">
+      {% if error is defined %}
+      <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
+      <input class="form-control" type="text" name="email" placeholder="Email">
+      <input class="form-control" type="password" name="password" placeholder="Password">
       <input class="btn btn-primary w-100" type="submit" value="Login">
     </form>
   </div>
