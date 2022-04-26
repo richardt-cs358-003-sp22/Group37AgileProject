@@ -11,25 +11,33 @@ router.get("/", function (req, res, next) {
   res.send("respond with a resource");
 });
 
+router.get("/login", function (req, res, next) {res.redirect("/login")});
 router.post("/login", function (req, res, next) {
   db.get_user(req.body.email, req.body.password)
     .then((o) => {
-      // TODO: set cookie or something
+      req.session.user = o.email;
+      req.session.name = o.legal_name;
       res.redirect('/');
     })
     .catch((e) => {
       console.log(e);
       res.status(e.code || 500);
-      res.render('login', { title: 'Express', error: e.code + ' ' + e.error });
+      res.render('login', { title: 'Express', error: e.error });
     });
 });
 
+router.get("/create", function (req, res, next) {res.redirect("/create")});
 router.post("/create", function (req, res, next) {
   db.add_user(req.body.email, req.body.password, req.body.legal_name)
-    .then((o) => res.json(o))
+    .then((o) => {
+      req.session.user = o.email;
+      req.session.name = o.legal_name;
+      res.redirect('/');
+    })
     .catch((e) => {
       console.log(e);
-      next(createError(e.code || 500));
+      res.status(e.code || 500);
+      res.render('create', { title: 'Express', error: e.error });
     });
 });
 
