@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const bodyParser = require('body-parser');
+const session = require('express-session')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -28,6 +29,14 @@ app.use(sassMiddleware({
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
 app.use(express.static(path.join(__dirname, 'public')));
 

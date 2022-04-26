@@ -45,6 +45,7 @@ exports.add_user = async function(email, password, legal_name) {
     let conn = await pool.getConnection();
     const salt = crypto.randomBytes(16);
     await conn.query("INSERT INTO users (email, salt, password, legal_name) VALUES (?, ?, SHA2(CONCAT(?, ?), 256), ?)", [email, salt, salt, password, legal_name]);
+    return { email: email, legal_name: legal_name };
   } catch(e) {
     if(e.code == 'ER_DUP_ENTRY') {
       throw {
@@ -74,7 +75,7 @@ exports.get_user = async function(email, password) {
     };
   }
   if(rows.length == 1) {
-    return rows[0];
+    return { email: email, legal_name: rows[0].legal_name };
   } else {
     throw {
       code: 400,
