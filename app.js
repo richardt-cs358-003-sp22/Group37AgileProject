@@ -31,7 +31,7 @@ app.use(sassMiddleware({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('trust proxy', 1) // trust first proxy
+app.set('trust proxy', 1); // trust first proxy
 app.use(session({
   name: 'session',
   secret: 'keyboard cat',
