@@ -17,7 +17,7 @@ router.post("/login", function (req, res, next) {
     .then((o) => {
       req.session.user = o.email;
       req.session.name = o.legal_name;
-      res.redirect('/');
+      res.redirect("/");
     })
     .catch((e) => {
       console.log(e);

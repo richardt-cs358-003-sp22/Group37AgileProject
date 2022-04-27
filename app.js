@@ -6,7 +6,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const bodyParser = require('body-parser');
-const session = require('express-session')
+const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -32,11 +33,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
+  name: 'session',
   secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}))
+  resave: true,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // Required to be false since we don't have tls enabled
+  },
+  store: new MemoryStore({
+    checkPeriod: 1000 * 60 * 60, // prune expired entries every 1h
+  }),
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
