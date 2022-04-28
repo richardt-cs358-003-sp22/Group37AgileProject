@@ -21,7 +21,41 @@
   <div class = "container">
 <div class = "row">
 <div class = "col wf"> Calender 
-
+{% set form_name = "cal" %}
+{% set date = "today" %}
+<div class="calendar container text-center user-select-none" data-date="{{ date }}" data-start="" data-end="" data-range="" name="{{ form_name }}">
+  <div class="calendar_header row justify-content-around pt-2">
+    <button class="previous col-1 btn"><i class="fa fa-chevron-left"></i></button>
+    <button class="col-3 btn w-50" data-bs-toggle="collapse" data-bs-target="#cal_{{ form_name }}_months">
+      <i class="fa fa-chevron-down mx-4"></i>
+      <span class="month">Loading</span> <span class="year">Loading</span>
+      <i class="fa fa-chevron-down mx-4"></i>
+    </button>
+    <button class="next col-1 btn"><i class="fa fa-chevron-right"></i></button>
+  </div>
+  <div id="cal_{{ form_name }}_months" class="calendar_months row justify-content-around collapse hide ">
+    {% for year in [-3, -2, -1, 1, 2, 3] %}
+    <div style="width: 16.6666%" class="btn year-btn" data-year="{{ year }}">{{ year }}</div>
+    {% endfor %}
+    {% for month in ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+    <div style="width: 16.6666%" class="btn month-btn" data-month="{{ loop.index0 }}">{{ month }}</div>
+    {% endfor %}
+  </div>
+  <div class="calendar_weekdays row justify-content-around bg-primary py-2 my-2 rounded-3">
+    {% for day in ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] %}
+    <div style="width: 14.285714%">{{ day }}</div>
+    {% endfor %}
+  </div>
+  <div class="calendar_weekdays row justify-content-around">
+    {% for i in 0..7*6 %}
+    <a class="btn rounded-0 hover-circle d-flex flex-column justify-content-center" style="width: 14.285714%;" draggable="true">
+      <div class="day" style="z-index: 5; position: relative;" data-day="{{ loop.index }}" data-date=""></div>
+    </a>
+    {% endfor %}
+  </div>
+  <input hidden name="{{ form_name }}_start" type="date" class="cal_form_start" value="">
+  <input hidden name="{{ form_name }}_end" type="date" class="cal_form_end" value="">
+</div>
 </div>
 
 <div class = "col wf">
@@ -66,5 +100,7 @@
 
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/calendar.js"></script>
 
 {% endblock %}
