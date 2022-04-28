@@ -47,7 +47,7 @@
     {% endfor %}
   </div>
   <div class="calendar_weekdays row justify-content-around">
-    {% for i in 0..7*6 %}
+    {% for i in 1..7*6 %}
     <a class="btn rounded-0 hover-circle d-flex flex-column justify-content-center" style="width: 14.285714%;" draggable="true">
       <div class="day" style="z-index: 5; position: relative;" data-day="{{ loop.index }}" data-date=""></div>
     </a>
