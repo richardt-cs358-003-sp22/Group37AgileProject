@@ -1,12 +1,11 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-
-  <div class = "container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <span class="navbar-toggler-icon"></span>
   </button>
+
   <a class="navbar-brand" href="#">Home</a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -19,6 +18,7 @@
   </div>
 </nav>
 
+  <div class = "container">
 <div class = "row">
 <div class = "col wf"> Calender 
 <table>
@@ -36,30 +36,51 @@
 </div>
 
 <div class = "col wf">
-<div class4="d-flex flex-row">
-<div class="d-flex justify-content-end p-2"> Search </div>
-<div class"p-2"> Resort Name: </div>
-<div class"p-2"> Location: </div>
-<div class"p-2"> Date: </div>
+<div class = "d-flex justify-content-end p-2"> Search </div>
+<div class = "p-2"> Resort Name: </div>
+<div class = "p-2"> Location: </div>
+<div class = "p-2"> Date: </div>
+</div>
+
+<div class = "col wf">
+<div class = "p-2"> &nbsp; </div>
+<div class = "p-2"> Room Type: </div>
+<div class = "p-2"> Owner: </div>
+</div>
+
+<div class = "border border-dark row">
+<div class = "col wf">
+<div class = "p-2"> Listings </div>
+</div>
+
+
+<div class = "col wf">
+<div class ="d-flex flex-row">
+<div class = "p-2"> Resort Name </div>
 </div>
 </div>
 
 <div class = "col wf">
-<div class4="d-flex flex-row">
-<div class"p-2"> &nbsp; </div>
-<div class"p-2"> Room Type: </div>
-<div class"p-2"> Owner: </div>
+<div class ="d-flex flex-row">
+<div class = "p-2"> Availiable Rooms </div>
 </div>
 </div>
 
-<div class = "row">
-<div class = "p-3 border border-dark"> Listings </div>
+<div class = "col wf">
+<div class ="d-flex flex-row">
+<div class = "p-2"> Room Type(s) </div>
+</div>
+</div>
+
+<div class = "col wf">
+<div class ="d-flex flex-row">
+<div class = "p-2"> Average Price </div>
+</div>
+</div>
+
 </div>
 
 </div>
 
 
 {% endblock %}
-
-
-
