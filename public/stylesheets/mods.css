@@ -1,0 +1,65 @@
+/*
+ * mods.css
+ * Copyright (C) 2022 matthew
+ *
+ * Distributed under terms of the MIT license.
+ */
+
+.circle {
+  float: left;
+  position: relative;
+  min-height: 50px;
+}
+.circle::after {
+  display: inline-block;
+  position: absolute;
+  float: none;
+  box-sizing: border-box;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  content: '';
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin: 0 auto;
+  background: #1089ff;
+  background-color: rgb(16, 137, 255);
+  background-image: none;
+  z-index: -1;
+}
+.hover-circle {
+  float: left;
+  position: relative;
+  min-height: 50px;
+}
+.hover-circle::after {
+  display: inline-block;
+  position: absolute;
+  float: none;
+  box-sizing: border-box;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  content: '';
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0);
+  transition: background .1s ease 0s;
+  /*z-index: -1;*/
+}
+.hover-circle:hover::after {
+  background: #1089ff;
+  background-color: rgb(16, 137, 255);
+  background-image: none;
+}
