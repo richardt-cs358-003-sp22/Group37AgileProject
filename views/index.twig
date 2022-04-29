@@ -20,7 +20,8 @@
 
   <div class = "container">
 <div class = "row">
-<div class = "col wf"> Calender 
+<div class = "col wf">
+{#Calendar code#}
 {% set form_name = "cal" %}
 {% set date = "today" %}
 <div class="calendar container text-center user-select-none" data-date="{{ date }}" data-start="" data-end="" data-range="" name="{{ form_name }}">
@@ -56,6 +57,7 @@
   <input hidden name="{{ form_name }}_start" type="date" class="cal_form_start" value="">
   <input hidden name="{{ form_name }}_end" type="date" class="cal_form_end" value="">
 </div>
+{#End Calendar code#}
 </div>
 
 <div class = "col wf">
