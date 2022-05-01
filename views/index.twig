@@ -10,20 +10,29 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      {% if name is defined %}
+        <li><a href="/logout">Logout {{ name }}</a></li>
+      {% else %}
+        <li><a href="/login">Login</a></li>
+      {% endif %}
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    {#<form class="form-inline my-2 my-lg-0">#}
+      {#<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
+      {#<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+    {#</form>#}
   </div>
 </nav>
 
   <div class = "container">
-<div class = "row">
+<form class="form-inline row" action="/" method="POST">
 <div class = "col wf">
 {#Calendar code#}
 {% set form_name = "cal" %}
-{% set date = "today" %}
+{% if params.start_cal is defined %}
+  {% set date = params.start_cal %}
+{% else %}
+  {% set date = "today" %}
+{% endif %}
 <div class="calendar container text-center user-select-none" data-date="{{ date }}" data-start="" data-end="" data-range="" name="{{ form_name }}">
   <div class="calendar_header row justify-content-around pt-2">
     <button class="previous col-1 btn"><i class="fa fa-chevron-left"></i></button>
@@ -62,40 +71,45 @@
 
 <div class = "col wf">
 <div class = "d-flex justify-content-end p-2"> Search </div>
-<div class = "p-2"> Resort Name: </div>
-<div class = "p-2"> Location: </div>
+<div class = "p-2"> Resort Name: <input type="text" class="form-control" name="resort_name" value="{{ params.resort_name }}" /></div>
+<div class = "p-2"> Location: <input type="text" class="form-control" name="location" value="{{ params.location }}" /></div>
 <div class = "p-2"> Date: </div>
 </div>
 
 <div class = "col wf">
-<div class = "p-2"> &nbsp; </div>
-<div class = "p-2"> Room Type: </div>
+<div class = "p-2"><button type="submit" class="btn btn-primary">Find Resorts</button> </div>
+<div class = "p-2"> Room Type: <input type="text" class="form-control" name="room_type" value="{{ params.room_type }}" /></div>
 <div class = "p-2"> Owner: </div>
 </div>
+</form>
 
 <div class = "border border-dark row">
 <div class = "col wf">
-<div class ="d-flex flex-row">
 <div class = "p-2 text-center"> Resort Name </div>
-</div>
+{% for resort in resorts %}
+<div class = "p-2 text-center">{{resort.name}}</div>
+{% endfor %}
 </div>
 
 <div class = "col wf">
-<div class ="d-flex flex-row">
 <div class = "p-2 text-center"> Availiable Rooms </div>
-</div>
+{% for resort in resorts %}
+<div class = "p-2 text-center">{{resort.rooms}}</div>
+{% endfor %}
 </div>
 
 <div class = "col wf">
-<div class ="d-flex flex-row">
 <div class = "p-2 text-center"> Room Type(s) </div>
-</div>
+{% for resort in resorts %}
+<div class = "p-2 text-center">{{resort.types}}</div>
+{% endfor %}
 </div>
 
 <div class = "col wf">
-<div class ="d-flex flex-row">
 <div class = "p-2 ms-auto"> Average Price </div>
-</div>
+{% for resort in resorts %}
+<div class = "p-2 text-center">{{resort.price}}</div>
+{% endfor %}
 </div>
 
 </div>
