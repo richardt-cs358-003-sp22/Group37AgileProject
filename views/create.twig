@@ -1,0 +1,24 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+<div class="container vw-100 vh-100 d-flex flex-column justify-content-center">
+  <div class="row"></div>
+  <div class="row">
+    <form action="/users/create" method="post"> 
+    <div class="constainer overflow-hidden">
+      <div class = "row gx-0 gy-2">
+        <div class="col-lg-4"></div>
+        {% if error is defined %}
+        <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+        <input class="form-control" type="text" name="email" placeholder="Email">
+        <input class="form-control" type="text" name="legal_name" placeholder="Legal Name">
+        <input class="form-control" type="password" name="password" placeholder="Password">
+        <input class="btn btn-primary w-100" type="submit" value="Login">
+      </div>
+    </div>
+    </form>
+  </div>
+  <div class="row"></div>
+</div>
+{% endblock %}
